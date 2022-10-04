@@ -1,6 +1,8 @@
 import { Tree } from "./Tree.js";
 
-let testArray = [3, 2, 5, 1, 3, 4, 9, 6, 3, 2, 7];
-let testTree = new Tree(testArray);
+let array = [13, 12, 15, 12, 14];
+let testTree = new Tree(array);
+
+testTree.insert(13);
 
 console.log(testTree);

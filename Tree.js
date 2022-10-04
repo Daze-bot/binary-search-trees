@@ -28,8 +28,24 @@ class Tree {
     return rootNode;
   }
 
-  insert(n) {
-    
+  insert(n, root = this.root) {
+    if (this.root === null) {
+      this.root = new Node(n);
+      return root;
+    }
+
+    if (root === null) {
+      root = new Node(n)
+      return root;
+    }
+
+    if (n > root.value) {
+      root.right = this.insert(n, root.right);
+    } else {
+      root.left = this.insert(n, root.left);
+    }
+
+    return root;
   }
 }
 
