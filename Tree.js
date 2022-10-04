@@ -3,8 +3,8 @@ import { mergeSort } from './mergeSort.js';
 
 class Tree {
   constructor(array) {
-    const finalArray = this.sortAndRemoveDups(array);
-    this.root = this.buildTree(finalArray, 0, finalArray.length - 1);
+    const startArray = this.sortAndRemoveDups(array);
+    this.root = this.buildTree(startArray, 0, startArray.length - 1);
   }
 
   sortAndRemoveDups(array) {
@@ -205,6 +205,15 @@ class Tree {
     }
 
     return this.checkBalance(root) !== false;
+  }
+
+  rebalance(root = this.root) {
+    if (this.isBalanced(root) === true) {
+      return;
+    }
+
+    let newArray = this.inOrder(root);
+    this.root = this.buildTree(newArray, 0, newArray.length - 1);
   }
 }
 
