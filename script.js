@@ -5,4 +5,4 @@ let testTree = new Tree(array);
 
 testTree.delete(2)
 
-console.log(testTree);
+console.log(testTree.find(5));

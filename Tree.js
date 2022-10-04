@@ -78,6 +78,17 @@ class Tree {
     }
     return minV;
   }
+
+  find(n, root = this.root) {
+    if (root === null || n === root.value) {
+      return root;
+    }
+
+    if (n > root.value) {
+      return this.find(n, root.right);
+    }
+    return this.find(n, root.left);
+  }
 }
 
 export { Tree };
