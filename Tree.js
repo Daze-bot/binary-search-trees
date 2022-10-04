@@ -47,6 +47,37 @@ class Tree {
 
     return root;
   }
+
+  delete(n, root = this.root) {
+    if (root === null) {
+      return root;
+    }
+
+    if (n > root.value) {
+      root.right = this.delete(n, root.right);
+    } else if (n < root.value) {
+      root.left = this.delete(n, root.left);
+    } else {
+      if (root.right === null) {
+        return root.left;
+      } else if (root.left === null) {
+        return root.right;
+      }
+      root.value = this.minValue(root.right);
+      root.right = this.delete(root.value, root.right);
+    }
+
+    return root;
+  }
+
+  minValue(root) {
+    let minV = root.value;
+    while (root.left != null) {
+      minV = root.left.value;
+      root = root.left;
+    }
+    return minV;
+  }
 }
 
 export { Tree };
